@@ -5,19 +5,19 @@ import random
 import os
 
 deck = {
-    "A"  : 11,
-    "K"  : 10,
-    "Q"  : 10,
-    "J"  : 10,
+    "A" : 11,
+    "K" : 10,
+    "Q" : 10,
+    "J" : 10,
     "10" : 10,
-    "9"  : 9,
-    "8"  : 8,
-    "7"  : 7,
-    "6"  : 6,
-    "5"  : 5,
-    "4"  : 4,
-    "3"  : 3,
-    "2"  : 2
+    "9" : 9,
+    "8" : 8,
+    "7" : 7,
+    "6" : 6,
+    "5" : 5,
+    "4" : 4,
+    "3" : 3,
+    "2" : 2
 }
 
 def deal_cards(i):
@@ -28,16 +28,15 @@ def deal_cards(i):
         card = random.randint(0,len(deck)-1)
         
         if card == 12:
-            temp_list += "K"
+            temp_list += ["K"]
         elif card == 11:
-            temp_list += "Q"
+            temp_list += ["Q"]
         elif card == 10:
-            temp_list += "J"
+            temp_list += ["J"]
         elif card == 0:
-            temp_list += "A"
+            temp_list += ["A"]
         else:
-            temp_list += str(card + 1)
-    
+            temp_list += [str(card + 1)]
     return temp_list
 
 
@@ -50,10 +49,10 @@ def calculate_score(list):
 
     count = 0
     score = 0
-    for item in list:
-        if item == "A":
+    for key in list:
+        if key == "A":
             count += 1
-        score += deck[item]
+        score += deck[key]
     
     if count > 1:
         score = score - ((count -1) * 10)
@@ -70,8 +69,10 @@ def clear():
 def blackjack():
     """Generates players cards and dealers cards to play blackjack."""
     gameover = False
+    
     player_cards = []
     dealer_cards = []
+    
     player_score = 0
     dealer_score = 0
 
