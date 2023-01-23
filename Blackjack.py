@@ -49,17 +49,20 @@ def calculate_score(list):
 
     count = 0
     score = 0
+    
     for key in list:
         if key == "A":
             count += 1
         score += deck[key]
     
-    if count > 1:
-        score = score - ((count -1) * 10)
-    
     if len(list) == 2 and score == 21:
         return -1
+    elif score > 21:
+        while count > 0 and score > 21:
+            score -= 10
+            count - 1
     return score
+    
 
 def clear():
     """Quick function to clear the terminal."""
